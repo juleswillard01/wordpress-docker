@@ -1,0 +1,44 @@
+# Exclure les fichiers d'environnement sensibles
+xenv/local.env
+xenv/dist.env
+
+# Exclure les dossiers de sauvegarde et de logs
+dist/backup/
+dist/logs/
+
+# Exclure les volumes Docker persistants
+dist/volumes/
+
+# Exclure les fichiers temporaires de l'environnement Python
+__pycache__/
+*.pyc
+
+
+# Exclure l'environnement virtuel
+venv/
+
+# Exclure les fichiers de configuration et de données générés
+dist/certs/
+
+
+# Exclure les dossiers de cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Exclure les fichiers temporaires d'éditeurs
+*.swp
+*.swo
+.idea/
+.vscode/
+
+#Exclure le mdp Wordpress
+wp.txt
+
+#Exclure la dernière archive zip générée
+dist.zip
+
+#Exclure les logs
+logs/
+

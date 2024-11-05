@@ -1,0 +1,37 @@
+services:
+  db:
+    image: mariadb:latest
+    container_name: wordpress_db
+    restart: always
+    env_file:
+      - ./dist.env
+    volumes:
+      - ./volumes/db:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress_app
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - ./dist.env
+    volumes:
+      - ./volumes/wp:/var/www/html
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    restart: always
+    depends_on:
+      - wordpress
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/nginx/certs
+
+volumes:
+  db_data: {}
+  wordpress_data: {}
